@@ -9,16 +9,12 @@ class Neuron():
     def __init__(self, model):
         self.model = model
         np.random.seed(1)
-        
-        #converting weights to a 3 by 3 matrix with values from -1 to 1 and mean of 0
-        self.synaptic_weights = 2 * np.random.random((3, len(self.model.input[0]))) - 1
+        self.synaptic_weights = 2 * np.random.random((3, 3)) - 1
 
     def sigmoid(self, x):
-        # Sigmoid function
         return 1 / (1 + np.exp(-x))
 
     def sigmoid_diff(self, x):
-        # derivative to the Sigmoid function
         return x * (1 - x)
 
     def train(self, training_iterations):
