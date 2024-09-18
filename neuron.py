@@ -21,8 +21,8 @@ class Neuron():
         for iteration in range(training_iterations):
             output = self.output(self.model.input)
             error = self.model.output - output
-            adjustment_factors = error * self.sigmoid_diff(output)
-            adjustment_diff = np.dot(self.model.input.T, error * self.sigmoid_diff(output))
+            adjustment_factor = error * self.sigmoid_diff(output)
+            adjustment_diff = np.dot(self.model.input.T, adjustment_factor)
             self.synaptic_weights += adjustment_diff
 
     def output(self, inputs):
