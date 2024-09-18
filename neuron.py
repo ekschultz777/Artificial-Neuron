@@ -20,7 +20,7 @@ class Neuron():
     def train(self, training_iterations):
         for iteration in range(training_iterations):
             output = self.output(self.model.input)
-            error = model.output - output
+            error = self.model.output - output
             adjustment_factors = error * self.sigmoid_diff(output)
             adjustment_diff = np.dot(self.model.input.T, error * self.sigmoid_diff(output))
             self.synaptic_weights += adjustment_diff
@@ -30,19 +30,17 @@ class Neuron():
         output = self.sigmoid(np.dot(inputs, self.synaptic_weights))
         return output
 
-
-if __name__ == "__main__":
-        # Guess the bitwise operator << 1
+def test():
+    # Guess the bitwise operator << 1
     model = Neuron.Model(
         input=np.array([[0,0,0], [0,0,1], [0,1,0], [0,1,1], [1,0,0], [1,0,1], [1,1,0]]), 
         output=np.array([[0,0,0], [0,1,0], [1,0,0], [1,1,0], [0,0,0], [0,1,0], [1,0,0]])
     )
     neuron = Neuron(model=model)
-    neuron.train(150)
+    neuron.train(100)
     
     new_situation = [1, 1, 1]
     output = neuron.output(np.array(new_situation))
-    # Round the numbers
     output = [round(x) for x in output] 
     print(f'Bitwise left (<< 1) guess for: {new_situation} = {output}')
 
@@ -52,11 +50,10 @@ if __name__ == "__main__":
         output=np.array([[0,0,0], [0,0,0], [0,0,1], [0,0,1], [0,1,0], [0,1,0], [0,1,1]])
     )
     neuron = Neuron(model=model)
-    neuron.train(150)
+    neuron.train(100)
     
     new_situation = [1, 1, 1]
     output = neuron.output(np.array(new_situation))
-    # Round the numbers
     output = [round(x) for x in output]
     print(f'Bitwise right (>> 1) guess for: {new_situation} = {output}')
 
@@ -78,4 +75,7 @@ if __name__ == "__main__":
     output = [round(x) for x in output] 
     print(f'Opposite (!) guess for: {new_situation} = {output}')
 
+
+if __name__ == "__main__":
+    test()
     
