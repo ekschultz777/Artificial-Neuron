@@ -41,8 +41,12 @@ def test():
     
     new_situation = [1, 1, 1]
     output = neuron.output(np.array(new_situation))
+    sum = 0
+    for value in output:
+        sum += value
+    error_percent = sum / len(output)
     output = [round(x) for x in output] 
-    print(f'Bitwise left (<< 1) guess for: {new_situation} = {output}')
+    print(f'Bitwise left (<< 1) guess for: {new_situation} = {output} | error: {error_percent}%')
 
     # Guess the bitwise operator >> 1 
     model = Neuron.Model(
@@ -54,8 +58,12 @@ def test():
     
     new_situation = [1, 1, 1]
     output = neuron.output(np.array(new_situation))
+    sum = 0
+    for value in output:
+        sum += value
+    error_percent = sum / len(output)
     output = [round(x) for x in output]
-    print(f'Bitwise right (>> 1) guess for: {new_situation} = {output}')
+    print(f'Bitwise right (>> 1) guess for: {new_situation} = {output} | error: {error_percent}%')
 
     # Guess the opposite (!) operator
     model = Neuron.Model(
@@ -67,13 +75,21 @@ def test():
     
     new_situation = [1, 1, 1]
     output = neuron.output(np.array(new_situation))
+    sum = 0
+    for value in output:
+        sum += value
+    error_percent = sum / len(output)
     output = [round(x) for x in output] 
-    print(f'Opposite (!) guess for: {new_situation} = {output}')
+    print(f'Opposite (!) guess for: {new_situation} = {output} | error: {error_percent}%')
 
     new_situation = [1, 1, 0]
     output = neuron.output(np.array(new_situation))
-    output = [round(x) for x in output] 
-    print(f'Opposite (!) guess for: {new_situation} = {output}')
+    sum = 0
+    for value in output:
+        sum += value
+    error_percent = sum / len(output)
+    output = [round(x) for x in output]
+    print(f'Opposite (!) guess for: {new_situation} = {output} | error: {error_percent}%')
 
 
 if __name__ == "__main__":
