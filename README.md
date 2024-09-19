@@ -5,7 +5,7 @@ A basic implementation of an artificial neuron, using a Sigmoid activation funct
 
 ## Getting Started
 ### Prerequisites
-- Python 3.7 or higher
+- Written using Python 3.12
 - Libraries: NumPy
 
 ### Installation
